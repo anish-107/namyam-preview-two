@@ -1,7 +1,11 @@
-"use client"; // This directive is necessary for using hooks like useState
+"use client";
 
 import { useState } from 'react';
 import BrandLogo from '../components/BrandLogo';
+
+// This line tells Next.js to render the page dynamically at request time
+// instead of trying to prerender it at build time. This fixes the build error.
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -47,7 +51,7 @@ export default function Home() {
       <div className="mb-8">
         <BrandLogo />
       </div>
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-100">We're Launching Soon!</h1>
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-100">We&apos;re Launching Soon!</h1>
       <p className="text-lg md:text-xl text-gray-400 mb-8">
         Our new website is under construction but we are getting ready to launch.
         Sign up to be the first to know when we go live. No spam, we promise.

@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Coming Soon | Your Brand",
+  title: "Coming Soon | Namyam",
   description: "Get ready for something amazing!",
 };
 

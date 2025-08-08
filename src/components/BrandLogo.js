@@ -7,17 +7,8 @@ export default function BrandLogo() {
           <stop offset="100%" stopColor="#4F46E5"/>
         </linearGradient>
       </defs>
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="middle"
-        textAnchor="middle"
-        fontFamily="Arial, sans-serif"
-        fontSize="30"
-        fontWeight="bold"
-        fill="url(#logoGradient)"
-      >
-        BRAND
+      <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="30" fontWeight="bold" fill="url(#logoGradient)">
+        NAMYAM
       </text>
     </svg>
   );
