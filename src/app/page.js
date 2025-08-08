@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import BrandLogo from '../components/BrandLogo';
 
-// This line tells Next.js to render the page dynamically at request time
-// instead of trying to prerender it at build time. This fixes the build error.
 export const dynamic = 'force-dynamic';
 
 export default function Home() {
@@ -47,14 +45,15 @@ export default function Home() {
   };
 
   return (
-    <div className="text-center p-8 max-w-2xl mx-auto">
-      <div className="mb-8">
-        <BrandLogo />
+    <div className="text-center p-4 sm:p-8 max-w-2xl mx-auto">
+      <div className="w-full max-w-[180px] sm:max-w-xs mx-auto mb-8">
+         <BrandLogo />
       </div>
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-100">We&apos;re Launching Soon!</h1>
-      <p className="text-lg md:text-xl text-gray-400 mb-8">
-        Our new website is under construction but we are getting ready to launch.
-        Sign up to be the first to know when we go live. No spam, we promise.
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-orange-600 dark:text-orange-400" style={{ fontFamily: 'serif' }}>
+        NAMYAM is Coming Soon!
+      </h1>
+      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+        Your ultimate online marketplace for authentic Puja Samagri Kits and spiritual products is almost here. Prepare to enrich your rituals and celebrations with ease.
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -62,20 +61,20 @@ export default function Home() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email address"
-          className="w-full sm:w-80 px-4 py-3 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="Enter your email to get notified"
+          className="w-full sm:w-80 px-4 py-3 rounded-full bg-white/70 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400"
           required
         />
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 disabled:bg-indigo-400 disabled:cursor-not-allowed"
+          className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 disabled:bg-orange-300"
         >
-          {isLoading ? 'Subscribing...' : 'Notify Me'}
+          {isLoading ? 'Subscribing...' : 'Notify Me!'}
         </button>
       </form>
 
-      {message && <p className="mt-4 text-gray-300">{message}</p>}
+      {message && <p className="mt-4 text-gray-600 dark:text-gray-400">{message}</p>}
     </div>
   );
 }
