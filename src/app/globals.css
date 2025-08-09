@@ -1,22 +1,35 @@
 @import "tailwindcss";
 
-/* ===== Light/Dark Theme Colors ===== */
+/*
+ * =============================================
+ * Global Variables & Theme Configuration
+ * =============================================
+ */
+
 :root {
-  --primary: #f97316;        /* Light orange */
-  --primary-dark: #ea580c;   /* Darker orange */
-  --primary-light: #fdba74;  /* Soft orange for backgrounds */
-  --background: #ffffff;
-  --foreground: #171717;
+  /**
+   * Forces a light color scheme across the application, preventing
+   * browser-level dark mode overrides on elements like scrollbars.
+   */
+  color-scheme: light;
+
+  /* Color Palette */
+  --primary: #f97316;       /* Main brand orange */
+  --primary-dark: #ea580c;   /* Darker orange, used for hover states */
+  --primary-light: #fdba74;  /* Soft orange, used for backgrounds or disabled states */
+
+  /* Base Theme Colors */
+  --background: #ffffff;   /* Default page background */
+  --foreground: #171717;   /* Default text color */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
-/* ===== Base Body Styles ===== */
+/*
+ * =============================================
+ * Base & Global Styles
+ * =============================================
+ */
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -24,32 +37,37 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ===== Orange Accent Utility Classes ===== */
-.text-primary {
-  color: var(--primary) !important;
+a {
+  transition: color 0.3s ease;
 }
 
-.text-primary-dark {
-  color: var(--primary-dark) !important;
+a:hover {
+  color: var(--primary-dark);
+  cursor: pointer;
 }
 
-.bg-primary {
-  background-color: var(--primary) !important;
-}
 
-.bg-primary-dark {
-  background-color: var(--primary-dark) !important;
-}
+/*
+ * =============================================
+ * Custom Utility Classes
+ * =============================================
+ */
 
-.bg-primary-light {
-  background-color: var(--primary-light) !important;
-}
+.text-primary { color: var(--primary) !important; }
+.text-primary-dark { color: var(--primary-dark) !important; }
+.bg-primary { background-color: var(--primary) !important; }
+.bg-primary-dark { background-color: var(--primary-dark) !important; }
+.bg-primary-light { background-color: var(--primary-light) !important; }
+.border-primary { border-color: var(--primary) !important; }
 
-.border-primary {
-  border-color: var(--primary) !important;
-}
 
-/* ===== Button Styles ===== */
+/*
+ * =============================================
+ * Component Styles
+ * =============================================
+ */
+
+/* Button Component */
 .btn-primary {
   background-color: var(--primary);
   color: white;
@@ -62,6 +80,7 @@ body {
 
 .btn-primary:hover {
   background-color: var(--primary-dark);
+  cursor: pointer;
 }
 
 .btn-primary:disabled {
@@ -69,17 +88,7 @@ body {
   cursor: not-allowed;
 }
 
-/* ===== Link Hover Effect ===== */
-a {
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--primary-dark);
-}
-
-
-/* ===== HEADER BASE ===== */
+/* Header Component */
 .site-header {
   position: sticky;
   top: 0;
@@ -89,12 +98,6 @@ a:hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   z-index: 1000;
   transition: background-color 0.3s ease;
-}
-
-@media (prefers-color-scheme: dark) {
-  .site-header {
-    background-color: rgba(15, 15, 15, 0.85);
-  }
 }
 
 .header-container {
@@ -115,7 +118,7 @@ a:hover {
   transform: scale(1.05);
 }
 
-/* ===== NAV LINKS ===== */
+/* Navigation Links */
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -133,55 +136,38 @@ a:hover {
   color: #f97316; /* Deeper orange */
 }
 
-@media (prefers-color-scheme: dark) {
-  .nav-item {
-    color: #fdba74;
-  }
-  .nav-item:hover {
-    color: #fbbf24;
-  }
-}
 
-/* ===== HAMBURGER MENU ===== */
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #d97706;
-}
+/*
+ * =============================================
+ * Mobile-Specific Styles (Responsive)
+ * =============================================
+ */
 
-@media (prefers-color-scheme: dark) {
-  .menu-toggle {
-    color: #fdba74;
-  }
-}
-
-/* ===== MOBILE STYLES ===== */
 @media (max-width: 640px) {
+  /* Hamburger Menu Toggle */
   .menu-toggle {
-    display: block;
+    display: block; /* Visible only on mobile */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #d97706;
   }
 
+  /* Mobile Navigation Menu */
   .nav-links {
     position: absolute;
-    top: 60px;
+    top: 60px; /* Position below the header */
     right: 1rem;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 1rem;
     border-radius: 8px;
     flex-direction: column;
     gap: 1rem;
-    display: none;
+    display: none; /* Hidden by default */
   }
 
-  @media (prefers-color-scheme: dark) {
-    .nav-links {
-      background-color: rgba(20, 20, 20, 0.95);
-    }
-  }
-
+  /* Class to show the mobile menu when toggled */
   .nav-links.open {
     display: flex;
   }
