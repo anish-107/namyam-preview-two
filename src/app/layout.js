@@ -10,9 +10,7 @@ export const metadata = {
   description: "Your ultimate online marketplace for authentic Puja Samagri Kits and spiritual products.",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.png", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon" }, // optional legacy
     ],
   },
 };
