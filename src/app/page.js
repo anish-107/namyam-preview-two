@@ -22,9 +22,7 @@ export default function Home() {
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
 
@@ -45,24 +43,38 @@ export default function Home() {
   };
 
   return (
-    <div className="text-center p-4 sm:p-8 max-w-2xl mx-auto">
-      <div className="w-full max-w-[180px] sm:max-w-xs mx-auto mb-8">
-         <BrandLogo />
-      </div>
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-orange-600 dark:text-orange-400" style={{ fontFamily: 'serif' }}>
-        NAMYAM is Coming Soon!
+    <div className="text-center px-4 sm:px-8 py-10 sm:py-16 max-w-3xl mx-auto">
+      {/* Title */}
+      <h1
+        className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary dark:text-primary-light tracking-tight"
+        style={{ fontFamily: 'serif' }}
+      >
+        <div className="w-20 sm:w-28 md:w-36 flex-shrink-0">
+          <BrandLogo />
+        </div>
+        <span className="text-center sm:text-left">is Coming Soon!</span>
       </h1>
-      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
-        Your ultimate online marketplace for authentic Puja Samagri Kits and spiritual products is almost here. Prepare to enrich your rituals and celebrations with ease.
+
+
+
+
+      {/* Subtitle */}
+      <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-10 leading-relaxed">
+        Your ultimate online marketplace for authentic Puja Samagri Kits and spiritual products is almost here.
+        Prepare to enrich your rituals and celebrations with ease.
       </p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center">
+      {/* Email Form */}
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+      >
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email to get notified"
-          className="w-full sm:w-80 px-4 py-3 rounded-full bg-white/70 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full sm:w-80 px-4 py-3 rounded-full bg-white/80 dark:bg-gray-800/80 border border-gray-300 dark:border-gray-700 shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
           required
         />
         <button
@@ -74,7 +86,10 @@ export default function Home() {
         </button>
       </form>
 
-      {message && <p className="mt-4 text-gray-600 dark:text-gray-400">{message}</p>}
+      {/* Status Message */}
+      {message && (
+        <p className="mt-6 text-sm text-gray-600 dark:text-gray-400">{message}</p>
+      )}
     </div>
   );
 }

@@ -3,11 +3,11 @@ import Image from 'next/image';
 export default function BrandLogo() {
   return (
     <Image
-      src="/logo.svg" // Assumes logo.svg is in your /public folder
+      src="/logo.svg"
       alt="Namyam Logo"
-      width={400}    // Increased width for a bigger logo
-      height={400}    // Increased height for a bigger logo
-      className="mx-auto" // Ensures the logo itself is centered within its container
+      width={160}  // just a base, actual size comes from wrapper
+      height={160}
+      className="w-full h-auto"
       priority
     />
   );
