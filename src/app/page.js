@@ -70,7 +70,7 @@ export default function Home() {
         <div className="w-20 sm:w-28 md:w-36 flex-shrink-0">
           <BrandLogo />
         </div>
-        <span className="text-center sm:text-left">is Coming Soon!</span>
+        <span className="text-center sm:text-left">    is Coming Soon!</span>
       </h1>
 
       {/* Subtitle / Tagline */}

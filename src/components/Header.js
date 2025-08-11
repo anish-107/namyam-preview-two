@@ -1,30 +1,48 @@
+// Header.js
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
-import BrandLogo from "./BrandLogo";
+import Image from 'next/image'; // Import Image directly
 
 /**
  * The main header component for the website.
- * Includes the brand logo and navigation links.
+ * Includes the brand logo (favicon + SVG) and navigation links.
  */
 export default function Header() {
-  // State to manage the visibility of the mobile navigation menu.
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Closes the mobile menu when a navigation link is clicked.
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
   return (
     <header className="bg-orange-50/80 backdrop-blur-lg shadow-md border-b border-orange-200 sticky top-0 z-50">
-      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 py-3 gap-3 sm:gap-0">
-
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center space-x-2 group" onClick={handleLinkClick}>
-          <div className="w-32 transition-transform duration-300 group-hover:scale-105">
-            <BrandLogo />
+      <div className="container mx-auto flex flex-row flex-wrap justify-between items-center px-4 py-3">
+        {/* Brand Logo Link */}
+        <Link
+          href="/"
+          className="flex items-center group"
+          onClick={handleLinkClick}
+        >
+          {/* Key Change: Logo logic is now directly inside the Header */}
+          <div className="w-32 transition-transform duration-300 group-hover:scale-105 flex items-center gap-2">
+            {/* 1. Favicon Image */}
+            <Image
+              src="/favicon.png"
+              alt="Brand Favicon"
+              width={32}
+              height={32}
+            />
+            {/* 2. Main SVG Logo */}
+            <Image
+              src="/logo.svg"
+              alt="Namyam Logo"
+              width={160}
+              height={160}
+              className="w-auto h-full"
+              priority
+            />
           </div>
         </Link>
 
@@ -37,10 +55,10 @@ export default function Header() {
           ☰
         </button>
 
-        {/* Navigation Links */}
+        {/* Navigation */}
         <nav
-          className={`flex-col sm:flex-row sm:flex items-center gap-4 sm:gap-6 transition-all duration-300 ${
-            menuOpen ? "flex" : "hidden sm:flex"
+          className={`w-full flex-col items-center gap-4 sm:w-auto sm:flex-row sm:flex sm:gap-6 sm:mt-0 transition-all duration-300 ${
+            menuOpen ? "flex mt-3" : "hidden"
           }`}
         >
           <Link
